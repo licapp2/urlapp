@@ -19,14 +19,19 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
           cache: gradle
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      # GitHub's Ubuntu runner already has Android SDK installed.
+      # Avoid setup-android here because its sdkmanager setup failed in the previous run.
+      - name: Verify Android SDK
+        run: |
+          echo "ANDROID_HOME=${ANDROID_HOME}"
+          test -d "${ANDROID_HOME}/platform-tools"
+          test -d "${ANDROID_HOME}/platforms"
 
       - name: Grant Gradle execute permission
         run: chmod +x ./gradlew
