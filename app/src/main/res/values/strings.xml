@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kiosk Browser</string>
+    <string name="app_name">WPM</string>
     <string name="settings_title">Settings</string>
     <string name="settings_cancel">Cancel</string>
     <string name="settings_save">Save settings</string>
